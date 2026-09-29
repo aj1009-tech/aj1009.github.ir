@@ -201,21 +201,21 @@
       place-items: center;
     }
 
-    .portrait::before {
-      content: "";
-      position: absolute;
-      bottom: -10%;
-      width: 105%;
-      height: 50%;
-      background: #a94283;
-      border: 2px solid var(--line);
-      border-radius: 50% 50% 0 0;
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 28%;
+      display: block;
     }
 
-    .face {
-      position: relative;
+    .portrait .photo-fallback {
+      display: none;
       font-size: clamp(5rem, 13vw, 10rem);
-      transform: rotate(-5deg);
+    }
+
+    .portrait:has(img[hidden]) .photo-fallback {
+      display: block;
     }
 
     .sticker {
@@ -545,10 +545,12 @@
         </div>
       </div>
 
-      <div class="art" role="img" aria-label="Playful illustration of a person surrounded by colorful stickers">
+      <div class="art">
         <div class="blob"></div>
         <div class="portrait">
-          <span class="face" aria-hidden="true">👩🏽‍💻</span>
+          <!-- Upload your photo to images/headshot.jpg in this repository. -->
+          <img src="images/headshot.jpg" alt="Headshot of Ananya Jaising" onerror="this.hidden=true">
+          <span class="photo-fallback" aria-hidden="true">👩🏽‍💻</span>
         </div>
         <span class="sticker one">markets + magic ✨</span>
         <span class="sticker two">made of ideas ♡</span>
@@ -636,7 +638,7 @@
       </div>
     </section>
 
-    <!-- Three projects with working links to the references below -->
+    <!-- Each card links to a real project or a detailed work reference. -->
     <section class="about" id="projects">
       <div class="wrap">
         <div class="section-head">
@@ -644,10 +646,7 @@
             <span class="eyebrow">Selected work</span>
             <h2 class="section-title">Things I've built ✳</h2>
           </div>
-          <p class="section-note">
-            A mix of market analysis, practical tools, and experiments
-            fueled by curiosity.
-          </p>
+          <p class="section-note">From market analysis on the desk to interactive tools you can try yourself.</p>
         </div>
 
         <div class="grid">
@@ -655,44 +654,29 @@
             <div class="card-top" aria-hidden="true">💱</div>
             <div class="card-body">
               <h3>FX Hedge Book</h3>
-              <p>
-                Built Python analytics for currency pair pricing and a
-                simulated hedge book with approximately $100K in simulated P&amp;L.
-              </p>
+              <p>Built Python analytics for currency pair pricing and a simulated hedge book with approximately $100K in simulated P&amp;L during my ING internship.</p>
               <div class="tags">PYTHON · FX · ANALYTICS</div>
-              <a class="btn secondary project-link" href="#fx-details">
-                Read project details ↗
-              </a>
+              <a class="btn secondary project-link" href="#fx-details">Read case study ↗</a>
             </div>
           </article>
 
           <article class="card">
-            <div class="card-top" aria-hidden="true">📊</div>
+            <div class="card-top" aria-hidden="true">🌍</div>
             <div class="card-body">
-              <h3>Commodity Pricing Tool</h3>
-              <p>
-                Created a real time pricing tool in Excel and Python with
-                Bloomberg integration for traders to use on the desk.
-              </p>
-              <div class="tags">EXCEL · PYTHON · BLOOMBERG</div>
-              <a class="btn secondary project-link" href="#commodity-details">
-                Read project details ↗
-              </a>
+              <h3>FX Hedge Simulator</h3>
+              <p>Try different future exchange rates to see how locking a rate affects the dollar cost of a euro payment.</p>
+              <div class="tags">HTML · CSS · JAVASCRIPT</div>
+              <a class="btn secondary project-link" href="projects/fx-hedge-simulator.html">Try the simulator ↗</a>
             </div>
           </article>
 
           <article class="card">
-            <div class="card-top" aria-hidden="true">⚡</div>
+            <div class="card-top" aria-hidden="true">✨</div>
             <div class="card-body">
-              <h3>Algorithmic Trading Exploration</h3>
-              <p>
-                Exploring trading strategies in Python and learning C++
-                to understand how to build and test them.
-              </p>
-              <div class="tags">PYTHON · C++ · IN PROGRESS</div>
-              <a class="btn secondary project-link" href="#trading-details">
-                Read project details ↗
-              </a>
+              <h3>Savings Goal Calculator</h3>
+              <p>Adjust your deposits, interest rate, and timeline to explore how close you could get to a savings goal.</p>
+              <div class="tags">HTML · CSS · JAVASCRIPT</div>
+              <a class="btn secondary project-link" href="projects/savings-goal-calculator.html">Try the calculator ↗</a>
             </div>
           </article>
         </div>
@@ -701,47 +685,14 @@
 
     <section id="project-details">
       <div class="wrap">
-        <span class="eyebrow">Project references</span>
+        <span class="eyebrow">Internship project reference</span>
         <h2 class="section-title">A closer look ✳</h2>
-
         <div class="timeline">
           <article class="entry" id="fx-details">
             <div class="number">01 / FX</div>
             <div>
               <h3>FX Hedge Book</h3>
-              <p>
-                During my ING internship, I built Python analytics to examine
-                currency pair pricing and simulated an FX hedge book. The
-                simulation produced approximately $100K in P&amp;L. This project
-                strengthened my understanding of how market moves affect
-                hedging decisions.
-              </p>
-            </div>
-          </article>
-
-          <article class="entry" id="commodity-details">
-            <div class="number">02 / COMMODITIES</div>
-            <div>
-              <h3>Commodity Pricing Tool</h3>
-              <p>
-                I developed an Excel and Python tool with Bloomberg integration
-                to display real time commodity prices for traders. I focused
-                on making the information quick to access and useful during
-                a busy trading day.
-              </p>
-            </div>
-          </article>
-
-          <article class="entry" id="trading-details">
-            <div class="number">03 / IN PROGRESS</div>
-            <div>
-              <h3>Algorithmic Trading Exploration</h3>
-              <p>
-                I’m exploring trading strategies in Python while learning C++
-                to better understand performance and implementation. I’m
-                interested in forming an idea, testing it with data, and
-                understanding where a strategy can fail.
-              </p>
+              <p>During my ING internship, I built Python analytics to examine currency pair pricing and simulated an FX hedge book. The simulation produced approximately $100K in P&amp;L. It helped me connect market moves with hedging decisions. The internship code and data are not public.</p>
             </div>
           </article>
         </div>
